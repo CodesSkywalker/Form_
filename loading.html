@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Loading...</title>
+    <script>
+      function redirect(url) {
+        window.location.href = url;
+      }
+
+javascript
+
+  function checkInternetConnection() {
+    var xhr = new XMLHttpRequest();
+    var file = "https://www.google.com";
+    var randomNum = Math.round(Math.random() * 10000);
+    xhr.open('HEAD', file + "?rand=" + randomNum, false);
+    try {
+      xhr.send();
+      if (xhr.status >= 200 && xhr.status < 304) {
+        redirect("index.html");
+      } else {
+        redirect("404.html");
+      }
+    } catch (e) {
+      redirect("404.html");
+    }
+  }
+  
+  window.onload = function() {
+    checkInternetConnection();
+  };
+</script>
+
+  </head>
+  <body>
+    <h1>Loading...</h1>
+    <p>Please wait while we check your internet connection.</p>
+  </body>
+</html>
